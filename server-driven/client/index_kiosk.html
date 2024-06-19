@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering Kiosk</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./index_kiosk.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>SAUWCE</h1>
+        <div class="menu">
+            <h2>Menu</h2>
+            <div class="grid-container">
+                <div>
+                    <img src="./images/plant.jpg" alt="Plantains">
+                    <div>
+                        <button onclick="addToCart('Plantains', 5)">Add to Cart</button>
+                        <button onclick="customizeItem('Plantains')">Customize</button>
+                    </div>
+                    <h1><p>$5</p><h1>
+                </div>
+                <div>
+                    <img src="./images/mac.jpg" alt="Mac">
+                    <div>
+                        <button onclick="addToCart('Mac', 10)">Add to Cart</button>
+                        <button onclick="customizeItem('Mac')">Customize</button>
+                    </div>
+                    <h1><p>$10</p><h1>
+                </div>
+                <div>
+                    <img src="./images/chix.jpg" alt="Chicken Sandwich">
+                    <div>
+                        <button onclick="addToCart('Chicken Sandwich', 7)">Add to Cart</button>
+                        <button onclick="customizeItem('Chicken Sandwich')">Customize</button>
+                    </div>
+                    <h1><p>$7</p><h1>
+                </div>
+                <div>
+                    <img src="./images/chix.jpg" alt="Chicken Sandwich">
+                    <div>
+                        <button onclick="addToCart('Chicken Sandwich', 7)">Add to Cart</button>
+                        <button onclick="customizeItem('Chicken Sandwich')">Customize</button>
+                    </div>
+                    <h1><p>$7</p><h1>
+                </div>
+                <div>
+                    <img src="./images/plant.jpg" alt="Plantains">
+                    <div>
+                        <button onclick="addToCart('Plantains', 5)">Add to Cart</button>
+                        <button onclick="customizeItem('Plantains')">Customize</button>
+                    </div>
+                    <h1><p>$5</p><h1>
+                </div>
+                <div>
+                    <img src="./images/mac.jpg" alt="Mac">
+                    <div>
+                        <button onclick="addToCart('Mac', 10)">Add to Cart</button>
+                        <button onclick="customizeItem('Mac')">Customize</button>
+                    </div>
+                    <h1><p>$10</p><h1>
+                </div>                
+                <div>
+                    <img src="./images/mac.jpg" alt="Mac">
+                    <div>
+                        <button onclick="addToCart('Mac', 10)">Add to Cart</button>
+                        <button onclick="customizeItem('Mac')">Customize</button>
+                    </div>
+                    <h1><p>$10</p><h1>
+                </div>
+                <div>
+                    <img src="./images/chix.jpg" alt="Chicken Sandwich">
+                    <div>
+                        <button onclick="addToCart('Chicken Sandwich', 7)">Add to Cart</button>
+                        <button onclick="customizeItem('Chicken Sandwich')">Customize</button>
+                    </div>
+                    <h1><p>$7</p><h1>
+                </div>
+                <div>
+                    <img src="./images/plant.jpg" alt="Plantains">
+                    <div>
+                        <button onclick="addToCart('Plantains', 5)">Add to Cart</button>
+                        <button onclick="customizeItem('Plantains')">Customize</button>
+                    </div>
+                    <h1><p>$5</p><h1>
+                </div>                                                                        
+                <!-- Repeat similar structure for the remaining items -->
+            </div>
+        </div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <button onclick="submitOrder()">Submit Order</button>
+            <button onclick="clearOrder()">Clear Order</button>
+        </div>
+    </div>
+</body>
+</html>
