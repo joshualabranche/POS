@@ -1,0 +1,4 @@
+curl https://api.stripe.com/v1/terminal/locations   -u sk_test_5wvb2UbtnzkyRwzqt26B5mbE0077rKVFfn:   -d "display_name"="jack's crib"   -d "address[line1]"="9 Lupine Rd"   -d "address[city]"="Lowell"   -d "address[state]"="MA"   -d "address[country]"="US"   -d "address[postal_code]"="01850" \
+
+curl https://api.stripe.com/v1/terminal/readers   -u sk_test_5wvb2UbtnzkyRwzqt26B5mbE0077rKVFfn:   -d "registration_code"="simulated-wpe"   -d "label"="Stripe Sample Reader"   -d "location"="tml_FnVdngWudSumik"
+
