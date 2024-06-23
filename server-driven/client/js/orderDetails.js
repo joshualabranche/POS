@@ -33,6 +33,11 @@ function displayOrderDetails(orderData) {
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
             removeButton.classList.add('remove-button');
+	    removeButton.style.width = '180px'; // setting the width to 200px
+            removeButton.style.height = '50px'; // setting the height to 200px
+            removeButton.style.background = 'black'; // setting the background color to teal
+            removeButton.style.color = 'white'; // setting the color to white
+            removeButton.style.fontSize = '14px'; // setting the font size to 20px
             removeButton.addEventListener('click', () => {
                 removeOrder(order.id);
             });
