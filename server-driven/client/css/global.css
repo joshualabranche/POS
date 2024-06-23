@@ -353,7 +353,7 @@ pre {
 
 /* Pasha styles – Brand-overrides, can split these out */
 :root {
-  --accent-color: #9b66ff;
+  --accent-color: #c31b04;
   --headline-color: var(--accent-color);
 }
 

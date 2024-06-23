@@ -32,9 +32,24 @@ function addToCart(item, price) {
 function submitOrder() {
     const cartItems = document.getElementById('cart-items');
     const items = cartItems.querySelectorAll('li');
+    
+    // Calculate total price    
+    let totalPrice = 0.0;
+    
+    // Iterate over each li element to calculate total price
+    items.forEach(li => {
+        // Extract the price from the li element
+        const priceText = li.querySelector('span:last-child').textContent.trim();
+        // Remove the '$' sign and convert to float
+        const price = parseFloat(priceText.replace('$', ''));
+        // Add to totalPrice
+        totalPrice += price;
+    });
+    
     const order = Array.from(items).map(li => li.textContent).join(', ');
     sessionStorage.setItem('order', order); // Store order in session storage
-    window.location.href = 'confirmation.html'; // Redirect to confirmation page
+    
+    window.location.href = `/process?total_amount=${totalPrice}`; // Redirect to confirmation page
 }
 
 function clearOrder() {
@@ -46,4 +61,9 @@ function removeItem(item) {
     listItem = item.parentNode;
     list = listItem.parentNode;         
     list.removeChild(listItem);
+}
+
+function updateTotalPrice() {
+    const cartItems = document.getElementById('cart-items');
+    const items = cartItems.querySelectorAll('li');
 }

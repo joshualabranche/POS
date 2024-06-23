@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
     addMessage(`Resetting the reader.`);
-    window.location.replace(`/canceled.html?payment_intent_id=${paymentIntentId}`);
+    window.location.replace(`/canceled?payment_intent_id=${paymentIntentId}`);
   });
 
   // Event listener for capture button 
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   captureButton.addEventListener('click', async (e) => {
     e.preventDefault(); 
     captureButton.disabled = true;
-    addMessage(`Capturing ${paymentIntentId}.`);
     const { captureError } = await capturePaymentIntent(paymentIntentId);
     if (captureError) {
       handleError(captureError);
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       captureButton.disabled = false;
       return;
     }
-    window.location.replace(`/success.html?payment_intent_id=${paymentIntentId}`);
+    window.location.replace(`/success?payment_intent_id=${paymentIntentId}`);
   });
 
   // Event listener for capture button 

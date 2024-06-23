@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const amount = urlParams.get('total_amount');
   const res = await fetch("/list-readers");
   const { readers, error: readerError } = await res.json();
   if (readerError) {
@@ -19,12 +21,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     readerSelect.append(readerOption);
   });
 
+
+    // Select the input element
+    const amountDefault = document.getElementById('amount');
+    // Set a default value
+    amountDefault.value = amount;
+
   const form = document.getElementById('confirm-form');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     form.querySelector('button').disabled = true;
 
-    const amountInput = parseInt(document.querySelector('#amount').value, 10);
+    const amountInput = amount; // parseInt(document.querySelector('#amount').value, 10);
 
     // Create Payment Intent
     const { paymentIntentId, paymentError } = await createPaymentIntent(amountInput);
@@ -37,13 +45,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Hand off to reader
     const readerId = document.querySelector("#reader-select").value;
+    addMessage(`Reader ID:  ${readerId}.`);
     const { processError } = await processPayment(readerId, paymentIntentId);
     if (processError) {
       handleError(processError);
       form.querySelector('button').disabled = false;
       return;
     }
-    window.location.replace(`/reader.html?reader_id=${readerId}&payment_intent_id=${paymentIntentId}&amount=${amountInput}`);
+    addMessage(`Payment ID:  ${paymentIntentId}.`);
+    window.location.replace(`/reader?reader_id=${readerId}&payment_intent_id=${paymentIntentId}&amount=${amountInput}`);
   });
 });
 
