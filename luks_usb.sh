@@ -20,7 +20,7 @@ apt-get install cryptsetup
 fdisk -l
 
 # prompt user for path of the device
-read -p 'Enter the drive path you wish to encrypt: ' DRIVEPATH
+read -p '\nEnter the drive path you wish to encrypt: ' DRIVEPATH
 
 # setup the LUKS encryption
 echo "Encrypting device at $DRIVEPATH"
@@ -40,7 +40,7 @@ done
 cryptsetup luksFormat --type luks2 --verify-passphrase $DRIVEPATH
 
 # prompt user for drive partition name
-read -p 'Enter the device partition name for the device: ' PARTNAME
+read -p '\nEnter the partition name for the device: ' PARTNAME
 
 # create new partition
 cryptsetup luksOpen $DRIVEPATH $PARTNAME
@@ -54,13 +54,13 @@ mkfs -t ext4 -V /dev/mapper/$PARTNAME
 # mounting the device to be used
 mount /dev/mapper/PARTNAME /mnt/$PARTNAME
 
-echo 'Device mounted for file transfer'
+echo '\nDevice mounted for file transfer\n'
 
 while true; do
 	read -p "Unmount Device? (Y -> unmount, N -> exit script) [Y/n] " yesno
         case $yesno in
                 [Yy]* )
-                        echo "Unoumnting Device"
+                        echo "Unmounting Device"
 			umount /mnt/$PARTNAME
 			cryptsetup luksClose $PARTNAME
 
@@ -69,6 +69,6 @@ while true; do
                         echo "Exiting!"
                         exit
                 ;;
-                * ) echo "Enter Y/N..."
+                * ) echo "..."
         esac
 done
