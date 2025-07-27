@@ -77,7 +77,7 @@ def create_payment_intent():
     [0] https://stripe.com/docs/api/payment_intents/create
     """
     try:
-        amount = request.get_json().get('amount')
+        amount = request.get_json().get('amount') + '00'
         payment_intent = stripe.PaymentIntent.create(
             amount=amount,
             currency="usd",

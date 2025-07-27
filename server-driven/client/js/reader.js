@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   
   // Get the reader
-  addMessage(`Retrieving reader ${readerId}.`)
+  // addMessage(`Retrieving reader ${readerId}.`)
   const { reader, readerError } = await retrieveReader(readerId);
   if (readerError) {
     handleError(readerError.message);
@@ -38,38 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       cancelButton.disabled = false;
       return;
     }
-    addMessage(`Resetting the reader.`);
+    // addMessage(`Resetting the reader.`);
     window.location.replace(`/canceled?payment_intent_id=${paymentIntentId}`);
-  });
-
-  // Event listener for capture button 
-  const captureButton = document.getElementById('capture-button');
-  captureButton.addEventListener('click', async (e) => {
-    e.preventDefault(); 
-    captureButton.disabled = true;
-    const { captureError } = await capturePaymentIntent(paymentIntentId);
-    if (captureError) {
-      handleError(captureError);
-      addMessage(`See your Stripe dashboard for error details for this payment here: ${paymentIntentId}.`);
-      captureButton.disabled = false;
-      return;
-    }
-    window.location.replace(`/success?payment_intent_id=${paymentIntentId}`);
-  });
-
-  // Event listener for capture button 
-  const simulatePaymentButton = document.getElementById('simulate-payment-button');
-  simulatePaymentButton.addEventListener('click', async (e) => {
-    e.preventDefault(); 
-    simulatePaymentButton.disabled = true;
-    const { simulatePaymentError } = await simulatePayment(reader.id);
-    if (simulatePaymentError) {
-      handleError(simulatePaymentError);
-      simulatePaymentButton.disabled = false;
-      return;
-    }
-    addMessage(`Successfully simulated payment for ${paymentIntentId}.`);
-    simulatePaymentButton.disabled = false;
   });
 });
 
